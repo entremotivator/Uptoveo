@@ -11,6 +11,7 @@ WEBHOOK_URL = "https://agentonline-u29564.vm.elestio.app/webhook-test/13471e1d-d
 # ------------------------
 st.title("Send Image & Prompt to n8n Webhook")
 
+# User inputs
 prompt = st.text_area("Enter your prompt", "A 3D animated cartoon-style young boy...")
 duration = st.text_input("Duration (seconds)", "6")
 
@@ -20,6 +21,9 @@ image_url_input = st.text_input("Or enter image URL")
 go_fast = st.checkbox("Go Fast", value=True)
 prompt_optimizer = st.checkbox("Prompt Optimizer", value=True)
 
+# ------------------------
+# Send to webhook
+# ------------------------
 if st.button("Send to n8n"):
     data = {
         "prompt": prompt,
@@ -30,9 +34,11 @@ if st.button("Send to n8n"):
 
     files = {}
     if uploaded_file:
-        files['first_frame_image'] = uploaded_file
+        # Send file under key "file"
+        files['file'] = (uploaded_file.name, uploaded_file, uploaded_file.type)
     elif image_url_input:
-        data['first_frame_image'] = image_url_input
+        # Include URL if no file uploaded
+        data['file'] = image_url_input
 
     try:
         if files:
