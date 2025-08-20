@@ -4,7 +4,7 @@ import requests
 # ------------------------
 # Configuration
 # ------------------------
-WEBHOOK_URL = "https://agentonline-u29564.vm.elestio.app/webhook-test/2640efb5-c7cd-4859-9242-81e6ce776038"
+WEBHOOK_URL = "https://agentonline-u29564.vm.elestio.app/webhook-test/13471e1d-d076-4450-92f6-1c643cb513c5"
 
 # ------------------------
 # Streamlit UI
